@@ -1,0 +1,30 @@
+# values.yaml
+
+frontend:
+  image: "kousalyabethireddy/carrental-frontend:latest"
+  replicaCount: 2
+  service:
+    type: ClusterIP
+    port: 80        # Service port
+    targetPort: 80  # Container port
+
+backend:
+  image: "kousalyabethireddy/carrental-backend:latest"
+  replicaCount: 2
+  service:
+    type: ClusterIP
+    port: 8080        # Service port
+    targetPort: 8080  # Container port
+
+# Needed by ecommerce/templates/pvc.yaml
+mysql:
+  storage: 1Gi
+
+# Needed by ecommerce/templates/ingress.yaml
+ingress:
+  enabled: false
+autoscaling:
+  backend:
+    enabled: false
+  frontend:
+    enabled: false
